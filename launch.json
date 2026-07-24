@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C (Terminal Integrado)",
+      "type": "codelldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/vector_struct",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "terminal": "integrated"
+    }
+  ]
+}

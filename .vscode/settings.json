@@ -1,0 +1,5 @@
+{
+  "python.analysis.extraPaths": [
+    "./OS_Three_Easy_pPieces/python_exercises/scheduler"
+  ]
+}
