@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct stackNode {
+typedef struct stackNode {
   int element;
   struct stackNode *next;
-};
+} stackNode;
 
 struct stackNode createNode(int element) {
-  struct stackNode *newNode = malloc(sizeof(struct stackNode));
+  stackNode *newNode = malloc(sizeof(stackNode));
   if (!newNode) {
     printf("heap overflow!");
   }
   newNode->element = element;
   newNode->next = NULL;
+
+  return *newNode;
 }
