@@ -71,8 +71,9 @@ Pilha startStack(int n) {
   return *newPilha;
 }
 
-void push(int element_id, char *moment, int time, Pilha *pointer) {
-  if (pointer->index_top == element_id) {
+void push(int element_id, char *moment, int time, Pilha *pointer) {}
+
+/*  if (pointer->index_top == element_id) {
     if (strcmp(moment, "end") == 0) {
       pointer->executed_time[element_id] +=
           (time - pointer->executed_time[pointer->index_prev]) + 1;
@@ -89,5 +90,4 @@ void push(int element_id, char *moment, int time, Pilha *pointer) {
       pointer->executed_time[pointer->index_prev] +=
           (time - pointer->executed_time[pointer->index_prev]);
     }
-  }
-}
+  } */
