@@ -1,28 +1,65 @@
-	.build_version macos, 26, 0	sdk_version 26, 5
-	.section	__TEXT,__text,regular,pure_instructions
-	.globl	_sum                            ; -- Begin function sum
-	.p2align	2
-_sum:                                   ; @sum
+	.file	"code.c"
+	.text
+	.globl	accum
+	.bss
+	.align 4
+	.type	accum, @object
+	.size	accum, 4
+accum:
+	.zero	4
+	.text
+	.globl	sum
+	.type	sum, @function
+sum:
+.LFB0:
 	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #16
+	pushq	%rbp
 	.cfi_def_cfa_offset 16
-	str	w0, [sp, #12]
-	str	w1, [sp, #8]
-	ldr	w8, [sp, #12]
-	ldr	w9, [sp, #8]
-	add	w8, w8, w9
-	str	w8, [sp, #4]
-	ldr	w10, [sp, #4]
-	adrp	x9, _accum@PAGE
-	ldr	w8, [x9, _accum@PAGEOFF]
-	add	w8, w8, w10
-	str	w8, [x9, _accum@PAGEOFF]
-	ldr	w0, [sp, #4]
-	add	sp, sp, #16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	%edi, -20(%rbp)
+	movl	%esi, -24(%rbp)
+	movl	-20(%rbp), %edx
+	movl	-24(%rbp), %eax
+	addl	%edx, %eax
+	movl	%eax, -4(%rbp)
+	movl	accum(%rip), %edx
+	movl	-4(%rbp), %eax
+	addl	%edx, %eax
+	movl	%eax, accum(%rip)
+	movl	-4(%rbp), %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-                                        ; -- End function
-	.globl	_accum                          ; @accum
-.zerofill __DATA,__common,_accum,4,2
-.subsections_via_symbols
+.LFE0:
+	.size	sum, .-sum
+	.globl	main
+	.type	main, @function
+main:
+.LFB1:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$16, %rsp
+	movl	$2, -4(%rbp)
+	movl	$3, -8(%rbp)
+	movl	-8(%rbp), %edx
+	movl	-4(%rbp), %eax
+	movl	%edx, %esi
+	movl	%eax, %edi
+	call	sum
+	movl	%eax, -12(%rbp)
+	movl	$0, %eax
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE1:
+	.size	main, .-main
+	.ident	"GCC: (GNU) 16.1.1 20260515 (Red Hat 16.1.1-2)"
+	.section	.note.GNU-stack,"",@progbits

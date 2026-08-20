@@ -7,3 +7,9 @@ int sum(int x, int y) {
   accum += t;
   return t;
 }
+
+int main()
+{
+  int x = 2, y = 3;
+  int a = sum(x,y);
+}
