@@ -1,12 +1,9 @@
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 
-int main()
-{
-  Uint32_t u = 4299672945u;
-  int32_t tu = (int) u;
+int main() {
+  unsigned long u = 4299672945;
+  int32_t tu = (int)u;
 
-  printf("u: %d; tu: %d\n", u, tu);
+  printf("u: %lu; tu: %d\n", u, tu);
 }
-
-
